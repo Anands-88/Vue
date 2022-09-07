@@ -6,6 +6,11 @@
     <h4>{{bindit}}</h4>
     <h5 class="movies" v-bind:class='isOld ? "old" : "New"'>Movies</h5>
     <button v-bind:id="bindit" disabled="disabled">button</button>
+    <p :style="someStyles">Applied styles</p>
+
+    <kbd v-if="num() == 0">Number is Even {{num()}}</kbd>
+    <kbd v-else-if="num() == 1">Number is Odd {{num()}}</kbd>
+    <kbd v-else>Not a Number</kbd>
   </div>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 </template>
@@ -23,7 +28,17 @@ export default {
       bindit:"Button",
       disabled:false,
       isOld:false,
-      isNew:true
+      isNew:true,
+      someStyles:{
+        fontSize:48+"px",
+        background:"smoke",
+        color:"orangered",
+        width:40+"px",
+        margin:'auto'
+      },
+      num(){
+        
+      }
     }
   }
   // components: {
