@@ -31,7 +31,7 @@
 
 
 export default {
-  name: 'Hello-World',
+  name: 'HelloWorld',
   data(){
     return{
       name:"Anand",
