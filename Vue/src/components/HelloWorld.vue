@@ -8,7 +8,7 @@
     <button v-bind:id="bindit" disabled="disabled">button</button>
     <p :style="someStyles">Applied styles</p>
 
-    <kbd v-if="num() == 0">Number is Even {{num()}}</kbd>
+    <kbd v-if="num() == 0">Nuv-for="(item,index) in array" :key="index"mber is Even {{num()}}</kbd>
     <kbd v-else-if="num() == 1">Number is Odd {{num()}}</kbd>
     <kbd v-else>Not a Number</kbd>
 
