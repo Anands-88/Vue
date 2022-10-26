@@ -30,11 +30,12 @@
     <h3>{{ addName }}</h3>
 
     <div class="Boxes">
-      <div :style="box.a ? borderColor:normal" @click="boxSelected('A')">First</div>
-      <div class="second" :class={boxB:box.b} @click="boxSelected('B')">
+      <div :style="box.a ? borderColor : normal" @click="boxSelected('A')">First</div>
+      <div class="second" :class="{ boxB: box.b }" @click="boxSelected('B')">
         Second
       </div>
       <div :class="box.c ? 'boxC' : 'third'" @click="boxSelected('C')">Third</div>
+      <div :class="changeStyle" @click="boxSelected('D')">Fourth</div>
     </div>
   </div>
 </template>
@@ -52,15 +53,19 @@ export default {
       htmlEle: `<h4>Learn Vue</h4>`,
       finalName: "",
       computed: "",
-      box:{a:false,b:false,c:false},
-      borderColor:{borderColor:'red',background:'orange',color:'white'},
-      normal:{borderColor:'grey',background:'white',color:'black'}
+      box: { a: false, b: false, c: false, d: false },
+      borderColor: { borderColor: 'red', background: 'orange', color: 'white' },
+      normal: { borderColor: 'grey', background: 'white', color: 'black' }
     };
   },
   computed: {
     addName() {
       return this.computed + " " + "Running";
     },
+    changeStyle() {
+      return this.box.d ? 'boxD' : 'third'
+      // return this.box.d ? { boxD: this.box.d } : { third: !this.box.d }
+    }
     // conditionCount(){
     //   if(this.counter > 20)
     //   {
@@ -100,20 +105,20 @@ export default {
     changeCount(value) {
       this.counter += value;
     },
-    boxSelected(selected)
-    {
-      if(selected == "A")
-      {
-        this.box = {a:true,b:false,c:false}
+    boxSelected(selected) {
+      if (selected == "A") {
+        this.box = { a: true, b: false, c: false, d: false }
       }
-      else if(selected == "B")
-      {
-        this.box = {a:false,b:true,c:false}
+      else if (selected == "B") {
+        this.box = { a: false, b: true, c: false, d: false }
       }
-      else if(selected == "C")
-      {
-        this.box = {a:false,b:false,c:true}
+      else if (selected == "C") {
+        this.box = { a: false, b: false, c: true, d: false }
       }
+      else if (selected == "D") {
+        this.box = { a: false, b: false, c: false, d: true }
+      }
+
     }
 
   },
@@ -128,30 +133,34 @@ export default {
   width: 180px;
 }
 
-.Boxes{
-  width:800px;
-  display:flex;
+.Boxes {
+  width: 800px;
+  display: flex;
   justify-content: space-around;
   text-align: center;
   line-height: 80px;
 }
 
-.Boxes > *{
-  width:220px;
-  border:6px solid black;
+.Boxes>* {
+  width: 150px;
+  border: 6px solid black;
   font-size: 20px;
-  font-weight:900;
+  font-weight: 900;
 }
 
-.second,.third{
-  border-color:grey;
-  background:white;
-  color:black;
+.second,
+.third,
+.fourth {
+  border-color: grey;
+  background: white;
+  color: black;
 }
 
-.boxB,.boxC{
-  border-color:red;
-  background:orange;
-  color:white;
+.boxB,
+.boxC,
+.boxD {
+  border-color: red;
+  background: orange;
+  color: white;
 }
 </style>
